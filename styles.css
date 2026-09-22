@@ -77,19 +77,44 @@ body {
 }
 
 @media (max-width: 720px) {
-
   /* GUIDE 1: hide the horizontal nav by default on small screens */
+  .nav {
+    display: none;
+  }
 
   /* GUIDE 2: show the hamburger on small screens */
+  .hamburger {
+    /* Block item because they are hidden by default */
+    display: block;
+
+  }
 
   /* GUIDE 3: reveal nav when toggled (use ~ combinator) */
+  .menu-toggle:checked ~ .nav {
+    /* GUIDE 4: style nav as vertical panel */
+    display: block;
+    background: #fff;
+    border: 1px solid #8a8a8a;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
 
-  /* GUIDE 4: style nav as vertical panel */
   /* 4-1) How the link inside of nav should be displayed? */  
+  #menu-toggle:checked ~ .nav a {
+    display: block;
+  }
 
-  /* 4-2) Where the nav should be positioned? */
-   
+   .menu-toggle:checked ~ .nav {
+    /* 4-2) Where the nav should be positioned? */
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+   }
+
 }
+
+
 /* (Optional) X animation */
 #menu-toggle:checked + .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 #menu-toggle:checked + .hamburger span:nth-child(2) { opacity: 0; }
